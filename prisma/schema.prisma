@@ -35,6 +35,7 @@ model CalendarAccount {
 enum CalendarAccountProvider {
   GOOGLE
   MICROSOFT
+  APPLE
 }
 
 enum CalendarAccountStatus {

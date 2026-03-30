@@ -138,7 +138,7 @@ export const calendarEventsRouter = createTRPCRouter({
         isAllDay: z.boolean().optional(),
         isRecurring: z.boolean().optional(),
         recurrence: z.array(z.string()).optional().nullable(),
-        transparency: z.enum(["transparent", "opaque"]).optional()
+        transparency: z.enum(["transparent", "opaque"]).optional(),
       }),
     )
     .mutation(async ({ input }) => {

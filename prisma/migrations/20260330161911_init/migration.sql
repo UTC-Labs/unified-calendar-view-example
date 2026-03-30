@@ -1,8 +1,19 @@
 -- CreateEnum
-CREATE TYPE "CalendarAccountProvider" AS ENUM ('GOOGLE', 'MICROSOFT');
+CREATE TYPE "CalendarAccountProvider" AS ENUM ('GOOGLE', 'MICROSOFT', 'APPLE');
 
 -- CreateEnum
 CREATE TYPE "CalendarAccountStatus" AS ENUM ('ACTIVE', 'EXPIRED');
+
+-- CreateTable
+CREATE TABLE "post" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "createdById" TEXT NOT NULL,
+
+    CONSTRAINT "post_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "calendar_account" (
@@ -96,6 +107,9 @@ CREATE TABLE "verification" (
 );
 
 -- CreateIndex
+CREATE INDEX "post_name_idx" ON "post"("name");
+
+-- CreateIndex
 CREATE INDEX "calendar_account_userId_idx" ON "calendar_account"("userId");
 
 -- CreateIndex
@@ -115,6 +129,9 @@ CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "session_token_key" ON "session"("token");
+
+-- AddForeignKey
+ALTER TABLE "post" ADD CONSTRAINT "post_createdById_fkey" FOREIGN KEY ("createdById") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "calendar_account" ADD CONSTRAINT "calendar_account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE;

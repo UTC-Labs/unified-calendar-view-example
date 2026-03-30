@@ -1,3 +1,4 @@
+import { AppleLogoIcon } from "@/components/icons/apple-logo";
 import { GoogleLogoIcon } from "@/components/icons/google-logo";
 import { MicrosoftLogoIcon } from "@/components/icons/microsoft-logo";
 import { CalendarAccountProvider } from "@prisma/client";
@@ -15,6 +16,8 @@ export function ProviderLogoIcon({
     return <GoogleLogoIcon {...props} />;
   } else if (provider === CalendarAccountProvider.MICROSOFT) {
     return <MicrosoftLogoIcon {...props} />;
+  } else if (provider === CalendarAccountProvider.APPLE) {
+    return <AppleLogoIcon {...props} />;
   } else {
     return null;
   }

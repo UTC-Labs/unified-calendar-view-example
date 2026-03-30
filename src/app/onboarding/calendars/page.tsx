@@ -1,5 +1,6 @@
 import { GoogleLogoIcon } from "@/components/icons/google-logo";
 import { MicrosoftLogoIcon } from "@/components/icons/microsoft-logo";
+import { AppleLogoIcon } from "@/components/icons/apple-logo";
 import {
   Card,
   CardContent,
@@ -11,13 +12,9 @@ import { getConnectCalendarUrl } from "@/lib/calendars";
 import { cn } from "@/lib/utils";
 import { getServerSession } from "@/server/auth";
 import { CalendarAccountProvider } from "@prisma/client";
-import {
-  CalendarIcon,
-  ChevronRightIcon,
-  CommandIcon,
-  MegaphoneIcon,
-} from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import { redirect } from "next/navigation";
+import { AppleCalendarOnboardingItem } from "./apple-calendar-item";
 
 export default async function CalendarsPage() {
   const session = await getServerSession();
@@ -91,6 +88,7 @@ export default async function CalendarsPage() {
               </div>
             </li>
           ))}
+          <AppleCalendarOnboardingItem />
         </ul>
       </CardContent>
     </Card>

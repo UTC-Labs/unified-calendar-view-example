@@ -1,5 +1,7 @@
 "use client";
 
+import { AppleLogoIcon } from "@/components/icons/apple-logo";
+import { ConnectAppleAccountDialog } from "@/components/connect-apple-account-dialog";
 import { GoogleLogoIcon } from "@/components/icons/google-logo";
 import { MicrosoftLogoIcon } from "@/components/icons/microsoft-logo";
 import { ProviderLogoIcon } from "@/components/icons/provider-logo";
@@ -56,6 +58,7 @@ import { useState } from "react";
 
 export function CalendarsSidebar({ userId }: { userId: string }) {
   const [createEventOpen, setCreateEventOpen] = useState(false);
+  const [appleDialogOpen, setAppleDialogOpen] = useState(false);
   const { data: calendarAccounts } = api.calendarAccounts.getAll.useQuery();
   const utils = api.useUtils();
 
@@ -109,6 +112,11 @@ export function CalendarsSidebar({ userId }: { userId: string }) {
   };
 
   const handleRefreshConnection = async (account: CalendarAccount) => {
+    if (account.provider === CalendarAccountProvider.APPLE) {
+      setAppleDialogOpen(true);
+      return;
+    }
+
     try {
       window.location.href = getConnectCalendarUrl({
         provider: account.provider,
@@ -253,6 +261,12 @@ export function CalendarsSidebar({ userId }: { userId: string }) {
                         Microsoft Calendar
                       </a>
                     </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setAppleDialogOpen(true)}
+                    >
+                      <AppleLogoIcon />
+                      Apple Calendar
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </SidebarMenuItem>
@@ -288,6 +302,10 @@ export function CalendarsSidebar({ userId }: { userId: string }) {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter />
+      <ConnectAppleAccountDialog
+        open={appleDialogOpen}
+        onOpenChange={setAppleDialogOpen}
+      />
     </Sidebar>
   );
 }
