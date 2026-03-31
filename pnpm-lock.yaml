@@ -12,8 +12,8 @@ importers:
         specifier: ^2.7.2
         version: 2.10.0(@prisma/client@6.16.3(prisma@6.16.3(typescript@5.9.3))(typescript@5.9.3))
       '@onecal/unified-calendar-api-node-sdk':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       '@prisma/client':
         specifier: ^6.5.0
         version: 6.16.3(prisma@6.16.3(typescript@5.9.3))(typescript@5.9.3)
@@ -448,8 +448,8 @@ packages:
     resolution: {integrity: sha512-XlOlEbQcE9fmuXxrVTXCTlG2nlRXa9Rj3rr5Ue/+tX+nmkgbX720YHh0VR3hBF9xDvwnb8D2shVGOwNx+ulArw==}
     engines: {node: '>= 20.19.0'}
 
-  '@onecal/unified-calendar-api-node-sdk@1.1.0':
-    resolution: {integrity: sha512-cR9IIO5Yqg4zx7g/F9MsNyy5EMVn/RvYwdliDJhYgn6SKFqAaGo2whSWmnay5N+5FNGcqt6MTBniW1iUFzbIlA==}
+  '@onecal/unified-calendar-api-node-sdk@1.2.0':
+    resolution: {integrity: sha512-YIKhnTOIVvDlgfjEm6V5WH6Ryj8Xhs/i/eoKIbFkycpPvc9Siq4w8OG98hPAMbgJEPhKWXtghA5a3zPrPg8+Ug==}
     engines: {node: '>=16'}
 
   '@panva/hkdf@1.2.1':
@@ -2226,7 +2226,7 @@ snapshots:
 
   '@noble/hashes@2.0.1': {}
 
-  '@onecal/unified-calendar-api-node-sdk@1.1.0':
+  '@onecal/unified-calendar-api-node-sdk@1.2.0':
     dependencies:
       axios: 1.13.5
       winston: 3.19.0
