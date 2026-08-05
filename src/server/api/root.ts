@@ -1,7 +1,6 @@
 import { calendarAccountsRouter } from "@/server/api/routers/calendar-accounts";
 import { calendarEventsRouter } from "@/server/api/routers/calendar-events";
 import { calendarsRouter } from "@/server/api/routers/calendars";
-import { postRouter } from "@/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 
 /**
@@ -10,7 +9,6 @@ import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  post: postRouter,
   calendarAccounts: calendarAccountsRouter,
   calendars: calendarsRouter,
   calendarEvents: calendarEventsRouter,
@@ -23,7 +21,7 @@ export type AppRouter = typeof appRouter;
  * Create a server-side caller for the tRPC API.
  * @example
  * const trpc = createCaller(createContext);
- * const res = await trpc.post.all();
- *       ^? Post[]
+ * const res = await trpc.calendarAccounts.getAll();
+ *       ^? CalendarAccount[]
  */
 export const createCaller = createCallerFactory(appRouter);
