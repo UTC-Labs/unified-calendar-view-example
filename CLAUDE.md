@@ -26,7 +26,7 @@ Next.js 15 (App Router) + React 19 + TypeScript, with tRPC for type-safe API cal
 
 ### Key Patterns
 
-**tRPC API layer** (`src/server/api/`): Routers live in `src/server/api/routers/` (calendar-events, calendar-accounts, calendars, post). The root router in `root.ts` aggregates them. Procedures are either `publicProcedure` or `protectedProcedure` (requires auth session). tRPC client setup is in `src/trpc/`.
+**tRPC API layer** (`src/server/api/`): Routers live in `src/server/api/routers/` (calendar-events, calendar-accounts, calendars). The root router in `root.ts` aggregates them. Procedures are either `publicProcedure` or `protectedProcedure` (requires auth session). tRPC client setup is in `src/trpc/`.
 
 **OneCal Unified API client** (`src/server/lib/onecal-unified/`): HTTP client using `ky` that wraps the external OneCal API. `client.ts` has methods for managing end-user accounts, calendars, and events. `types.ts` defines the API response types. All external calendar operations go through this client.
 
