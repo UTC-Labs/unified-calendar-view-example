@@ -20,8 +20,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@apiroc/unified-calendar-api-node-sdk": "^2.0.1",
     "@auth/prisma-adapter": "^2.7.2",
-    "@onecal/unified-calendar-api-node-sdk": "^1.2.0",
     "@prisma/client": "^6.5.0",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-collapsible": "^1.1.11",

@@ -17,7 +17,7 @@ export const env = createEnv({
     MICROSOFT_CLIENT_ID: z.string(),
     MICROSOFT_CLIENT_SECRET: z.string(),
     MICROSOFT_TENANT_ID: z.string(),
-    ONECAL_UNIFIED_API_KEY: z.string(),
+    APIROC_API_KEY: z.string(),
     DATABASE_URL: z.string().url(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
@@ -32,8 +32,8 @@ export const env = createEnv({
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
     NEXT_PUBLIC_APP_URL: z.string().url(),
-    NEXT_PUBLIC_ONECAL_UNIFIED_URL: z.string().url(),
-    NEXT_PUBLIC_ONECAL_UNIFIED_APP_ID: z.string(),
+    NEXT_PUBLIC_APIROC_URL: z.string().url(),
+    NEXT_PUBLIC_APIROC_APP_ID: z.string(),
   },
 
   /**
@@ -42,9 +42,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-    NEXT_PUBLIC_ONECAL_UNIFIED_URL: process.env.NEXT_PUBLIC_ONECAL_UNIFIED_URL,
-    NEXT_PUBLIC_ONECAL_UNIFIED_APP_ID:
-      process.env.NEXT_PUBLIC_ONECAL_UNIFIED_APP_ID,
+    NEXT_PUBLIC_APIROC_URL: process.env.NEXT_PUBLIC_APIROC_URL,
+    NEXT_PUBLIC_APIROC_APP_ID: process.env.NEXT_PUBLIC_APIROC_APP_ID,
 
     AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
     BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
@@ -53,7 +52,7 @@ export const env = createEnv({
     MICROSOFT_CLIENT_ID: process.env.MICROSOFT_CLIENT_ID,
     MICROSOFT_CLIENT_SECRET: process.env.MICROSOFT_CLIENT_SECRET,
     MICROSOFT_TENANT_ID: process.env.MICROSOFT_TENANT_ID,
-    ONECAL_UNIFIED_API_KEY: process.env.ONECAL_UNIFIED_API_KEY,
+    APIROC_API_KEY: process.env.APIROC_API_KEY,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
   },

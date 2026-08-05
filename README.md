@@ -1,6 +1,6 @@
 # 🗓️ Unified Calendar View Example
 
-This example application demonstrates how to use the [**OneCal Unified Calendar API**](https://www.onecal.io/unified-calendar-api) and explore its key features in an unified calendar interface.
+This example application demonstrates how to use the [**Apiroc Calendar API**](https://www.apiroc.com) and explore its key features in an unified calendar interface.
 
 ---
 
@@ -55,14 +55,14 @@ MICROSOFT_CLIENT_ID=<your-microsoft-client-id>
 MICROSOFT_CLIENT_SECRET=<your-microsoft-client-secret>
 ```
 
-#### 🌐 OneCal Unified configuration
+#### 🌐 Apiroc configuration
 
-Used to connect the app to your OneCal Unified Calendar instance. You can retrieve your OneCal Unified App ID and create the API key from the [OneCal Unified Dashboard](https://app.onecalunified.com/). You can visit the [OneCal Unified Calendar API Docs](https://docs.onecalunified.com/) to learn more about configuring OneCal Unified.
+Used to connect the app to your Apiroc Calendar API instance. You can retrieve your Apiroc App ID and create the API key from the [Apiroc Dashboard](https://app.apiroc.com/). You can visit the [Apiroc Calendar API Docs](https://docs.apiroc.com/) to learn more about configuring Apiroc.
 
 ```bash
-NEXT_PUBLIC_ONECAL_UNIFIED_URL="https://api.onecalunified.com"
-NEXT_PUBLIC_ONECAL_UNIFIED_APP_ID=<your-onecal-unified-app-id>
-ONECAL_UNIFIED_API_KEY=<your-onecal-unified-api-key>
+NEXT_PUBLIC_APIROC_URL="https://api.apiroc.com"
+NEXT_PUBLIC_APIROC_APP_ID=<your-apiroc-app-id>
+APIROC_API_KEY=<your-apiroc-api-key>
 ```
 
 #### 🗄️ Database connection
@@ -84,7 +84,7 @@ pnpm db:migrate
 
 ### 4. Register the redirect uri
 
-Register the local application endpoint [http://localhost:3000/api/connect](http://localhost:3000/api/connect) as an Authorized Redirect URI in the [OneCal Unified Dashboard](https://app.onecalunified.com/) under the Configuration menu.
+Register the local application endpoint [http://localhost:3000/api/connect](http://localhost:3000/api/connect) as an Authorized Redirect URI in the [Apiroc Dashboard](https://app.apiroc.com/) under the Configuration menu.
 
 ### 5. Start the development server
 

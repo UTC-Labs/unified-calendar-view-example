@@ -9,7 +9,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const metadata: Metadata = {
   title: "Unified Calendar View Example",
-  description: "Unified Calendar View Example using OneCal Unified API",
+  description:
+    "Unified Calendar View Example using Apiroc Unified Calendar API",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

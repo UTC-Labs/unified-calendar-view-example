@@ -16,7 +16,7 @@ import { api } from "@/trpc/react";
 import {
   formatLocalDate,
   formatLocalDateTime,
-  formatOneCalDate,
+  formatApirocDate,
   getRRuleText,
 } from "@/lib/utils";
 import * as Yup from "yup";
@@ -193,13 +193,13 @@ export function EventForm({
     const startTimezone = baseEvent?.start?.timeZone ?? defaultTimeZone;
 
     const start = {
-      dateTime: formatOneCalDate(values.start, startTimezone),
+      dateTime: formatApirocDate(values.start, startTimezone),
       timeZone: startTimezone,
     };
 
     const endTimeZone = baseEvent?.end?.timeZone ?? defaultTimeZone;
     const end = {
-      dateTime: formatOneCalDate(values.end, endTimeZone),
+      dateTime: formatApirocDate(values.end, endTimeZone),
       timeZone: endTimeZone,
     };
 
