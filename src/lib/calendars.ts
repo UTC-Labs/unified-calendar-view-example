@@ -1,6 +1,6 @@
 import { env } from "@/env";
 import { stateToB64 } from "@/lib/utils";
-import { getOAuthUrl } from "@onecal/unified-calendar-api-node-sdk/oauth";
+import { getOAuthUrl } from "@apiroc/unified-calendar-api-node-sdk/oauth";
 import { CalendarAccountProvider } from "@prisma/client";
 
 export function getConnectCalendarUrl({

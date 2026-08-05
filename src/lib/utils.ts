@@ -33,7 +33,7 @@ export const formatICalDate = (date: string, timeZone: string) => {
   return formatInTimeZone(d, timeZone, "yyyyMMdd'T'HHmmss");
 };
 
-export const formatOneCalDate = (date: string, timeZone: string) => {
+export const formatApirocDate = (date: string, timeZone: string) => {
   const d = new Date(date);
 
   return formatInTimeZone(d, timeZone, "yyyy-MM-dd'T'HH:mm:ssXXX");

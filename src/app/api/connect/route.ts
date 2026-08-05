@@ -1,8 +1,11 @@
 import { env } from "@/env";
 import { stateFromB64 } from "@/lib/utils";
 import { db } from "@/server/db";
-import { onecalClient } from "@/server/lib/onecal-unified/client";
-import type { CalendarAccountProvider, CalendarAccountStatus } from "@prisma/client";
+import { apirocClient } from "@/server/lib/apiroc/client";
+import type {
+  CalendarAccountProvider,
+  CalendarAccountStatus,
+} from "@prisma/client";
 
 import type { NextRequest } from "next/server";
 
@@ -20,7 +23,8 @@ export async function GET(request: NextRequest) {
   }
 
   const { userId } = stateFromB64(state);
-  const endUserAccount = await onecalClient.endUserAccounts.get(endUserAccountId);
+  const endUserAccount =
+    await apirocClient.endUserAccounts.get(endUserAccountId);
 
   const user = await db.user.findUnique({
     where: {
@@ -67,7 +71,7 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const calendars = await onecalClient.calendars.list(endUserAccount.id);
+  const calendars = await apirocClient.calendars.list(endUserAccount.id);
 
   for (const calendar of calendars.data) {
     await db.calendar.upsert({

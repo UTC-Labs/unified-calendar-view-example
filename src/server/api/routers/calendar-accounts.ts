@@ -1,6 +1,6 @@
 import { env } from "@/env";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
-import { onecalClient } from "@/server/lib/onecal-unified/client";
+import { apirocClient } from "@/server/lib/apiroc/client";
 import { TRPCError } from "@trpc/server";
 import type { CalendarAccountStatus } from "@prisma/client";
 import { z } from "zod";
@@ -49,7 +49,7 @@ export const calendarAccountsRouter = createTRPCRouter({
 
       let endUserAccount;
       try {
-        endUserAccount = await onecalClient.basicAuth.connect(appId, "apple", {
+        endUserAccount = await apirocClient.basicAuth.connect(appId, "apple", {
           email: input.email,
           password: input.password,
         });
@@ -94,7 +94,7 @@ export const calendarAccountsRouter = createTRPCRouter({
         });
       }
 
-      const calendars = await onecalClient.calendars.list(endUserAccount.id);
+      const calendars = await apirocClient.calendars.list(endUserAccount.id);
 
       for (const calendar of calendars.data) {
         await ctx.db.calendar.upsert({

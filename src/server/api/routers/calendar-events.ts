@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
-import { onecalClient } from "@/server/lib/onecal-unified/client";
+import { apirocClient } from "@/server/lib/apiroc/client";
 import {
   APIRequestError,
   type Event,
   type PaginatedResponse,
-} from "@onecal/unified-calendar-api-node-sdk";
+} from "@apiroc/unified-calendar-api-node-sdk";
 import { CalendarAccountStatus } from "@prisma/client";
 
 export const calendarEventsRouter = createTRPCRouter({
@@ -24,9 +24,8 @@ export const calendarEventsRouter = createTRPCRouter({
         },
       });
 
-      let events: Array<
-        Event & { calendarId: string; calendarColor: string }
-      > = [];
+      let events: Array<Event & { calendarId: string; calendarColor: string }> =
+        [];
 
       const calendarEvents: Array<
         Event & {
@@ -38,7 +37,7 @@ export const calendarEventsRouter = createTRPCRouter({
       > = (
         await Promise.all(
           visibleCalendars.map(async (calendar) => {
-            const events = await onecalClient.events
+            const events = await apirocClient.events
               .list(
                 calendar.calendarAccount.unifiedAccountId,
                 calendar.unifiedCalendarId,
@@ -100,7 +99,7 @@ export const calendarEventsRouter = createTRPCRouter({
       }),
     )
     .query(async ({ ctx, input }) => {
-      return await onecalClient.events.get(
+      return await apirocClient.events.get(
         input.endUserAccountId,
         input.calendarId,
         input.eventId,
@@ -142,18 +141,22 @@ export const calendarEventsRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input }) => {
-      await onecalClient.events.create(input.endUserAccountId, input.calendarId, {
-        title: input.title,
-        start: input.start,
-        end: input.end,
-        attendees: input.attendees,
-        organizer: input.organizer,
-        description: input.description,
-        transparency: input.transparency,
-        isAllDay: input.isAllDay,
-        isRecurring: input.isRecurring,
-        recurrence: input.recurrence ?? undefined,
-      });
+      await apirocClient.events.create(
+        input.endUserAccountId,
+        input.calendarId,
+        {
+          title: input.title,
+          start: input.start,
+          end: input.end,
+          attendees: input.attendees,
+          organizer: input.organizer,
+          description: input.description,
+          transparency: input.transparency,
+          isAllDay: input.isAllDay,
+          isRecurring: input.isRecurring,
+          recurrence: input.recurrence ?? undefined,
+        },
+      );
       return { success: true };
     }),
   editCalendarEvent: publicProcedure
@@ -193,7 +196,7 @@ export const calendarEventsRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input }) => {
-      await onecalClient.events.update(
+      await apirocClient.events.update(
         input.endUserAccountId,
         input.calendarId,
         input.id,
@@ -221,7 +224,7 @@ export const calendarEventsRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input }) => {
-      await onecalClient.events.delete(
+      await apirocClient.events.delete(
         input.endUserAccountId,
         input.calendarId,
         input.eventId,
