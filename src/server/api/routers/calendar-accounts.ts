@@ -45,7 +45,7 @@ export const calendarAccountsRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.session.user.id;
-      const appId = env.NEXT_PUBLIC_ONECAL_UNIFIED_APP_ID;
+      const appId = env.NEXT_PUBLIC_APIROC_APP_ID;
 
       let endUserAccount;
       try {

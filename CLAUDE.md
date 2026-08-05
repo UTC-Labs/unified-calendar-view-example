@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Next.js 16 example app demonstrating the OneCal Unified Calendar API — a unified calendar interface that aggregates Google and Microsoft calendar accounts, allowing users to view, create, update, and delete events across providers.
+A Next.js 16 example app demonstrating the Apiroc Calendar API — a unified calendar interface that aggregates Google and Microsoft calendar accounts, allowing users to view, create, update, and delete events across providers.
 
 ## Commands
 
@@ -28,7 +28,7 @@ Next.js 15 (App Router) + React 19 + TypeScript, with tRPC for type-safe API cal
 
 **tRPC API layer** (`src/server/api/`): Routers live in `src/server/api/routers/` (calendar-events, calendar-accounts, calendars, post). The root router in `root.ts` aggregates them. Procedures are either `publicProcedure` or `protectedProcedure` (requires auth session). tRPC client setup is in `src/trpc/`.
 
-**OneCal Unified API client** (`src/server/lib/onecal-unified/`): HTTP client using `ky` that wraps the external OneCal API. `client.ts` has methods for managing end-user accounts, calendars, and events. `types.ts` defines the API response types. All external calendar operations go through this client.
+**Apiroc API client** (`src/server/lib/onecal-unified/`): HTTP client using `ky` that wraps the external Apiroc API. `client.ts` has methods for managing end-user accounts, calendars, and events. `types.ts` defines the API response types. All external calendar operations go through this client.
 
 **Authentication** (`src/server/auth.ts`): Uses better-auth with Prisma adapter. Social login via Google and Microsoft. Sessions are checked in protected routes/procedures.
 
@@ -36,7 +36,7 @@ Next.js 15 (App Router) + React 19 + TypeScript, with tRPC for type-safe API cal
 
 **Calendar UI**: Uses react-big-calendar with date-fns localizer. Supports day/week/month views. Recurring events are expanded client-side using the `rrule` library.
 
-**Database schema** (`prisma/schema.prisma`): Core models are User → CalendarAccount → Calendar. CalendarAccount stores the `unifiedAccountId` linking to the OneCal API. Calendar stores `unifiedCalendarId`. Events are not persisted locally — they're fetched from the OneCal API at runtime.
+**Database schema** (`prisma/schema.prisma`): Core models are User → CalendarAccount → Calendar. CalendarAccount stores the `unifiedAccountId` linking to the Apiroc API. Calendar stores `unifiedCalendarId`. Events are not persisted locally — they're fetched from the Apiroc API at runtime.
 
 **Environment validation** (`src/env.js`): Uses `@t3-oss/env-nextjs` with Zod schemas. All env vars must be declared here. Set `SKIP_ENV_VALIDATION=1` to bypass during builds.
 
