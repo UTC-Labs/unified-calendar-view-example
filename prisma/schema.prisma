@@ -21,6 +21,8 @@ model CalendarAccount {
   provider         CalendarAccountProvider
   unifiedAccountId String
   email            String
+  // CalDAV server the account lives on; empty for other providers.
+  serverUrl        String                  @default("")
 
   status    CalendarAccountStatus
   calendars Calendar[]
@@ -36,6 +38,7 @@ enum CalendarAccountProvider {
   GOOGLE
   MICROSOFT
   APPLE
+  CALDAV
 }
 
 enum CalendarAccountStatus {

@@ -2,6 +2,7 @@
 
 import { AppleLogoIcon } from "@/components/icons/apple-logo";
 import { ConnectAppleAccountDialog } from "@/components/connect-apple-account-dialog";
+import { ConnectCalDavAccountDialog } from "@/components/connect-caldav-account-dialog";
 import { GoogleLogoIcon } from "@/components/icons/google-logo";
 import { MicrosoftLogoIcon } from "@/components/icons/microsoft-logo";
 import { ProviderLogoIcon } from "@/components/icons/provider-logo";
@@ -36,6 +37,7 @@ import {
 } from "@prisma/client";
 
 import {
+  CalendarDaysIcon,
   ChevronRightIcon,
   EyeOffIcon,
   PlusIcon,
@@ -59,6 +61,11 @@ import { useState } from "react";
 export function CalendarsSidebar({ userId }: { userId: string }) {
   const [createEventOpen, setCreateEventOpen] = useState(false);
   const [appleDialogOpen, setAppleDialogOpen] = useState(false);
+  const [calDavDialog, setCalDavDialog] = useState<{
+    open: boolean;
+    serverUrl?: string;
+    email?: string;
+  }>({ open: false });
   const { data: calendarAccounts } = api.calendarAccounts.getAll.useQuery();
   const utils = api.useUtils();
 
@@ -114,6 +121,15 @@ export function CalendarsSidebar({ userId }: { userId: string }) {
   const handleRefreshConnection = async (account: CalendarAccount) => {
     if (account.provider === CalendarAccountProvider.APPLE) {
       setAppleDialogOpen(true);
+      return;
+    }
+
+    if (account.provider === CalendarAccountProvider.CALDAV) {
+      setCalDavDialog({
+        open: true,
+        serverUrl: account.serverUrl,
+        email: account.email,
+      });
       return;
     }
 
@@ -267,6 +283,12 @@ export function CalendarsSidebar({ userId }: { userId: string }) {
                       <AppleLogoIcon />
                       Apple Calendar
                     </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setCalDavDialog({ open: true })}
+                    >
+                      <CalendarDaysIcon />
+                      CalDAV Calendar
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </SidebarMenuItem>
@@ -305,6 +327,12 @@ export function CalendarsSidebar({ userId }: { userId: string }) {
       <ConnectAppleAccountDialog
         open={appleDialogOpen}
         onOpenChange={setAppleDialogOpen}
+      />
+      <ConnectCalDavAccountDialog
+        open={calDavDialog.open}
+        onOpenChange={(open) => setCalDavDialog((prev) => ({ ...prev, open }))}
+        initialServerUrl={calDavDialog.serverUrl}
+        initialEmail={calDavDialog.email}
       />
     </Sidebar>
   );

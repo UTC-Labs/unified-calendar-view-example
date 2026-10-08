@@ -20,7 +20,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@apiroc/unified-calendar-api-node-sdk": "^2.0.1",
+    "@apiroc/unified-calendar-api-node-sdk": "^2.1.0",
     "@auth/prisma-adapter": "^2.7.2",
     "@prisma/client": "^6.5.0",
     "@radix-ui/react-avatar": "^1.1.10",

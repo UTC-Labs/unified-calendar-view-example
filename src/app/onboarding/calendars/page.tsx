@@ -15,6 +15,7 @@ import { CalendarAccountProvider } from "@prisma/client";
 import { ChevronRightIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { AppleCalendarOnboardingItem } from "./apple-calendar-item";
+import { CalDavCalendarOnboardingItem } from "./caldav-calendar-item";
 
 export default async function CalendarsPage() {
   const session = await getServerSession();
@@ -89,6 +90,7 @@ export default async function CalendarsPage() {
             </li>
           ))}
           <AppleCalendarOnboardingItem />
+          <CalDavCalendarOnboardingItem />
         </ul>
       </CardContent>
     </Card>

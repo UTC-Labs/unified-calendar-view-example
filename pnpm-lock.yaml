@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@apiroc/unified-calendar-api-node-sdk':
-        specifier: ^2.0.1
-        version: 2.0.1
+        specifier: ^2.1.0
+        version: 2.1.0
       '@auth/prisma-adapter':
         specifier: ^2.7.2
         version: 2.10.0(@prisma/client@6.16.3(prisma@6.16.3(typescript@5.9.3))(typescript@5.9.3))
@@ -169,8 +169,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@apiroc/unified-calendar-api-node-sdk@2.0.1':
-    resolution: {integrity: sha512-T8TsJIvw88ZYZslxzM57e69hg1Hk2C4nAnHlEbnJoVRFgPVUZWFJ+dMYz0p/KkAwQGkcRWbRD82QbLCI0wg6fg==}
+  '@apiroc/unified-calendar-api-node-sdk@2.1.0':
+    resolution: {integrity: sha512-LAUw5rwaXIGYEFVQjW2qgjn53rdE+wJFXGFKL5U4dUyCcGf3wROLLTJdKrl1eN/kOIBaB+gUZM/o+pGjy5s+mg==}
     engines: {node: '>=16'}
 
   '@auth/core@0.40.0':
@@ -2032,7 +2032,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@apiroc/unified-calendar-api-node-sdk@2.0.1':
+  '@apiroc/unified-calendar-api-node-sdk@2.1.0':
     dependencies:
       axios: 1.19.0
       winston: 3.19.0
