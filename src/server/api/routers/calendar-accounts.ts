@@ -59,10 +59,14 @@ export const calendarAccountsRouter = createTRPCRouter({
         });
       } catch (error) {
         console.error("Apple connect error:", error);
+        // Surface the API's message (e.g. "Provider not found" when iCloud is
+        // not enabled for the app), not a guess about the credentials.
         throw new TRPCError({
           code: "BAD_REQUEST",
           message:
-            "Failed to connect Apple account. Please check your email and app-specific password.",
+            error instanceof Error && error.message
+              ? error.message
+              : "Failed to connect Apple account. Please check your email and app-specific password.",
         });
       }
 

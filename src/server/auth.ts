@@ -21,6 +21,12 @@ export const auth = betterAuth({
       tenantId: env.MICROSOFT_TENANT_ID,
     },
   },
+  advanced: {
+    // Browsers share cookies across ports on localhost, and the Apiroc
+    // dashboard also uses better-auth's default cookie name, so logging into
+    // one app replaced the other's session cookie (and logged you out).
+    cookiePrefix: "unified-calendar-example",
+  },
   user: {
     additionalFields: {
       onboardingCompletedAt: {
